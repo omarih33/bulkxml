@@ -1,0 +1,5 @@
+
+Flask==3.0.3
+pandas==1.5.3
+markdown==3.4.3
+gunicorn==20.1.0
