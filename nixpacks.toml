@@ -1,5 +1,9 @@
-[phases.build]
-cmds = ["pip install -r requirements.txt"]
 
-[phases.start]
-cmd = "gunicorn bulkup:app"
+  [phases.setup]
+  system = ["python3", "gcc"]
+
+  [phases.build]
+  cmds = ["python -m venv /opt/venv --copies", ". /opt/venv/bin/activate", "pip install -r requirements.txt"]
+
+  [phases.start]
+  cmd = "gunicorn bulkup:app --bind 0.0.0.0:$PORT"
