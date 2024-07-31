@@ -229,7 +229,7 @@ def upload_file():
         with open(xml_filename, 'wb') as f:
             f.write(xml_str)
         
-        return send_file(xml_filename, as_attachment=True, attachment_filename=xml_filename)
+        return send_file(xml_filename, as_attachment=True)
 
 @app.after_request
 def remove_file(response):
