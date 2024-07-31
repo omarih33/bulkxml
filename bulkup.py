@@ -225,11 +225,11 @@ def upload_file():
         
         xml_str = generate_xml(csv_data)
         xml_filename = 'blog_posts.xml'
-
-         with open(xml_filename, 'wb') as f:
-             f.write(xml_str)
-
-         return send_file(xml_filename, as_attachment=True)
+        
+        with open(xml_filename, 'wb') as f:
+            f.write(xml_str)
+        
+        return send_file(xml_filename, as_attachment=True)
 
 @app.after_request
 def remove_file(response):
