@@ -1,9 +1,16 @@
 
-  [phases.setup]
-  system = ["python3", "gcc"]
+[phases.setup]
+# Explicitly specify the required system packages.
+system = ["python3", "gcc"]
 
-  [phases.build]
-  cmds = ["python -m venv /opt/venv --copies", ". /opt/venv/bin/activate", "pip install -r requirements.txt"]
+[phases.build]
+# Install dependencies inside a virtual environment.
+cmds = [
+    "python -m venv .venv",
+    ". .venv/bin/activate",
+    "pip install -r requirements.txt"
+]
 
-  [phases.start]
-  cmd = "gunicorn bulkup:app --bind 0.0.0.0:$PORT"
+[phases.start]
+# Specify the start command using gunicorn.
+cmd = ".venv/bin/gunicorn bulkup:app --bind 0.0.0.0:$PORT"
