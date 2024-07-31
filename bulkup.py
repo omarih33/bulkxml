@@ -224,15 +224,23 @@ def upload_file():
         csv_data['Attachments'] = csv_data['Attachments'].apply(clean_string)
         
         xml_str = generate_xml(csv_data)
-        xml_bytes = BytesIO(xml_str.encode('utf-8'))
-        xml_bytes.seek(0)
+        xml_filename = 'blog_posts.xml'
+        
+        with open(xml_filename, 'wb') as f:
+            f.write(xml_str.encode('utf-8'))  # Ensure it is saved as binary
 
-        return send_file(
-            xml_bytes,
-            mimetype='application/octet-stream',
+        response = send_file(
+            xml_filename,
+            mimetype='application/octet-stream',  # Force browser to download
             as_attachment=True,
-            attachment_filename='blog_posts.xml'
+            attachment_filename='blog_posts.xml',
+            cache_timeout=0  # Disable caching
         )
+
+        # Ensure files are removed after serving them
+        os.remove(xml_filename)
+
+        return response
 
 @app.after_request
 def remove_file(response):
