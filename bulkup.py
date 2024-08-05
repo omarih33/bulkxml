@@ -183,12 +183,12 @@ def generate_xml(csv_data):
 app = Flask(__name__)
 
 @app.route('/')
-def index():
-    return render_template('index.html')
-    
-@app.route('/home')
 def home():
     return send_from_directory('static', 'home.html')
+
+@app.route('/converter')
+def converter():
+    return render_template('index.html')
 
 @app.route('/download-template')
 def download_template():
