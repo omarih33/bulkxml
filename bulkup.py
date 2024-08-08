@@ -13,10 +13,10 @@ def clean_string(s):
     return str(s).strip()
 
 def convert_drive_link(url):
-    """Convert Google Drive sharing link to direct download link"""
+    """Convert Google Drive sharing link to a direct image link"""
     if 'drive.google.com' in url:
         file_id = url.split('/d/')[1].split('/view')[0]
-        return f"https://drive.google.com/uc?export=download&id={file_id}"
+        return f"https://drive.google.com/uc?id={file_id}"
     return url
 
 def generate_xml(csv_data):
