@@ -12,12 +12,6 @@ def clean_string(s):
         return ''
     return str(s).strip()
 
-def convert_drive_link(url):
-    """Convert Google Drive sharing link to a direct image link"""
-    if 'drive.google.com' in url:
-        file_id = url.split('/d/')[1].split('/view')[0]
-        return f"https://drive.google.com/uc?id={file_id}"
-    return url
 
 def generate_xml(csv_data):
     rss = ET.Element('rss', attrib={
@@ -82,7 +76,7 @@ def generate_xml(csv_data):
         categories = row['Categories']
         tags = row['Tags']
         
-        image_url = convert_drive_link(row['Image_url'])  # Convert Google Drive link if present
+        image_url = row['Image_url']  
         attachments = row['Attachments']
 
         item = ET.Element('item')
