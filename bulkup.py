@@ -12,6 +12,13 @@ def clean_string(s):
         return ''
     return str(s).strip()
 
+def convert_drive_link(url):
+    """Convert Google Drive sharing link to direct download link"""
+    if 'drive.google.com' in url:
+        file_id = url.split('/d/')[1].split('/view')[0]
+        return f"https://drive.google.com/uc?export=download&id={file_id}"
+    return url
+
 def generate_xml(csv_data):
     rss = ET.Element('rss', attrib={
         "xmlns:excerpt": "http://wordpress.org/export/1.2/excerpt/",
@@ -74,7 +81,8 @@ def generate_xml(csv_data):
         author = row['Author']
         categories = row['Categories']
         tags = row['Tags']
-        image_url = row['Image_url']
+        
+        image_url = convert_drive_link(row['Image_url'])  # Convert Google Drive link if present
         attachments = row['Attachments']
 
         item = ET.Element('item')
