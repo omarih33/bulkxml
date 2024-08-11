@@ -1,4 +1,4 @@
-from flask import Flask, request, send_file, render_template, redirect, flash, url_for
+from flask import Flask, request, send_file, render_template, redirect, url_for, send_from_directory
 import pandas as pd
 import xml.etree.ElementTree as ET
 from datetime import datetime
@@ -6,13 +6,12 @@ import markdown
 from io import BytesIO
 import os
 
-app = Flask(__name__)
-app.secret_key = os.urandom(24)
-
 def clean_string(s):
+    """Utility function to clean and strip strings"""
     if pd.isna(s):
         return ''
     return str(s).strip()
+
 
 def generate_xml(csv_data):
     rss = ET.Element('rss', attrib={
@@ -64,19 +63,21 @@ def generate_xml(csv_data):
     author_last_name.text = ""
 
     for post_id, (_, row) in enumerate(csv_data.iterrows(), start=1):
-        slug = clean_string(row.get('Slug', ''))
-        title = clean_string(row.get('Title', ''))
-        content = clean_string(row.get('Content', ''))
-        date = pd.to_datetime(row.get('Date', datetime.now()), errors='coerce')
+
+        slug = row['Slug']
+        title = row['Title']
+        content = row['Content']
+        date = pd.to_datetime(row['Date'], errors='coerce')
 
         if pd.isna(date):
             date = datetime.now()
 
-        author = clean_string(row.get('Author', ''))
-        categories = clean_string(row.get('Categories', ''))
-        tags = clean_string(row.get('Tags', ''))
-        image_url = clean_string(row.get('Image_url', '')) 
-        attachments = clean_string(row.get('Attachments', ''))
+        author = row['Author']
+        categories = row['Categories']
+        tags = row['Tags']
+        
+        image_url = row['Image_url']  
+        attachments = row['Attachments']
 
         item = ET.Element('item')
 
@@ -181,42 +182,42 @@ def generate_xml(csv_data):
     xml_str = output.getvalue()
     return xml_str
 
+app = Flask(__name__)
+
 @app.route('/')
 def home():
-    return render_template('tool.html')  # Ensure this matches your template file's name
+    return send_from_directory('static', 'home.html')
 
 @app.route('/converter')
 def converter():
-    return render_template('tool.html')  # Ensure this matches your template file's name
+    return render_template('index.html')
 
-@app.route('/upload', methods=['GET', 'POST'])
+@app.route('/download-template')
+def download_template():
+    df_template = pd.DataFrame({
+        'Title': [],
+        'Slug': [],
+        'Content': [],
+        'Date': [],
+        'Author': [],
+        'Categories': [],
+        'Tags': [],
+        'Image_url': [],
+        'Attachments': []
+    })
+    csv_path = 'template.csv'
+    df_template.to_csv(csv_path, index=False)
+    return send_file(csv_path, as_attachment=True)
+
+@app.route('/upload', methods=['POST'])
 def upload_file():
-    if request.method == 'GET':
-        flash('This URL is for file uploads only. Please upload a CSV file.', 'error')
-        return redirect(url_for('converter'))
-
-    if request.method == 'POST':
-        if 'file' not in request.files:
-            flash('No file part. Please upload a valid CSV file.', 'error')
-            return redirect(request.url)
-        
-        file = request.files['file']
-        if file.filename == '':
-            flash('No selected file. Please select a CSV file.', 'error')
-            return redirect(request.url)
-
-        try:
-            csv_data = pd.read_csv(file)
-        except Exception as e:
-            flash('There was an error reading the file. Please check the format and try again.', 'error')
-            return redirect(request.url)
-
-        required_columns = ['Title', 'Slug', 'Content', 'Date', 'Author', 'Categories', 'Tags', 'Image_url', 'Attachments']
-        if not all(column in csv_data.columns for column in required_columns):
-            flash('The uploaded CSV file is missing columns. Please ensure it contains the required columns: ' + ', '.join(required_columns), 'error')
-            return redirect(request.url)
-
-        # Cleaning the data
+    if 'file' not in request.files:
+        return redirect(request.url)
+    file = request.files['file']
+    if file.filename == '':
+        return redirect(request.url)
+    if file:
+        csv_data = pd.read_csv(file)
         csv_data['Title'] = csv_data['Title'].apply(clean_string)
         csv_data['Slug'] = csv_data['Slug'].apply(clean_string)
         csv_data['Content'] = csv_data['Content'].apply(clean_string)
@@ -226,18 +227,14 @@ def upload_file():
         csv_data['Tags'] = csv_data['Tags'].apply(clean_string)
         csv_data['Image_url'] = csv_data['Image_url'].apply(clean_string)
         csv_data['Attachments'] = csv_data['Attachments'].apply(clean_string)
-
-        try:
-            xml_str = generate_xml(csv_data)
-            xml_filename = 'blog_posts.xml'
-            
-            with open(xml_filename, 'wb') as f:
-                f.write(xml_str)
-            
-            return send_file(xml_filename, as_attachment=True)
-        except Exception as e:
-            flash('There was an error generating the XML file. Please try again or contact support@sqspthemes.com for assistance.', 'error')
-            return redirect(request.url)
+        
+        xml_str = generate_xml(csv_data)
+        xml_filename = 'blog_posts.xml'
+        
+        with open(xml_filename, 'wb') as f:
+            f.write(xml_str)
+        
+        return send_file(xml_filename, as_attachment=True)
 
 @app.after_request
 def remove_file(response):
