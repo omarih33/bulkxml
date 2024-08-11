@@ -62,7 +62,7 @@ def generate_xml(csv_data):
     author_last_name = ET.SubElement(author_elem, 'wp:author_last_name')
     author_last_name.text = ""
 
-    for i, row in csv_data.iterrows():
+    for post_id, (_, row) in enumerate(csv_data.iterrows(), start=1):
         post_id = i + 1
         slug = row['Slug']
         title = row['Title']
