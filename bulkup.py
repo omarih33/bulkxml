@@ -186,7 +186,7 @@ def generate_xml(csv_data):
 
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Needed for session management
+
 
 @app.route('/')
 def home():
