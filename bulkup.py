@@ -14,10 +14,6 @@ def clean_string(s):
     return str(s).strip()
 
 # Function to generate XML from CSV data
-def generate_xml(csv_data):
-    # ... [Same function body as before] ...
-    # (Keep the XML generation logic unchanged)
-    
 
 def generate_xml(csv_data):
     rss = ET.Element('rss', attrib={
