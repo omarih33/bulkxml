@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <script> var MemberSpace = window.MemberSpace || {"subdomain":"sqspthemes1"}; (function(d){ var s = d.createElement("script"); s.src = "https://cdn.memberspace.com/scripts/widgets.js"; var e = d.getElementsByTagName("script")[0]; e.parentNode.insertBefore(s,e); }(document)); </script>
     <style>
-              body {
+        body {
             font-family: 'Montserrat', sans-serif;
             background-color: #ffffff;
             color: #333;
@@ -20,6 +19,19 @@
             flex-direction: column;
             min-height: 100vh;
             padding: 20px;
+        }
+        .header {
+            width: 100%;
+            padding: 20px;
+            background-color: #f4f4f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: flex-end;
+        }
+        .header a.login-link {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: 600;
         }
         .container {
             max-width: 700px;
@@ -103,6 +115,9 @@
     </style>
 </head>
 <body>
+    <div class="header">
+        <a href="https://yourloginurl.com" class="login-link">Login</a>
+    </div>
     <div class="container">
         <h1>Tired of wasting countless hours manually inputting content into Squarespace?</h1>
         <h2>Introducing the CSV to XML Converter: Your Secret Weapon for Lightning-Fast Content Migration and Dynamic Summary Blocks</h2>
@@ -117,7 +132,7 @@
 
         <a href="https://blogxml.sqspthemes.com?msopen=/member/plans/ejkqla07fi" class="btn cta-button">Get Lifetime Access Now</a>
 
-  <div class="testimonial">
+        <div class="testimonial">
             <p>"Thanks so much for this, it's absolutely amazing."</p>
             <p class="testimonial-author">- Dave H.</p>
         </div>
@@ -126,6 +141,7 @@
         <iframe src="https://www.youtube.com/embed/kdQ5eaFq-0Y" frameborder="0" allowfullscreen></iframe>
         
         <p><strong>Sign up or log in now to access the full power of our conversion tool!</strong></p>
+        <div>[ms-widget-embed path="/member/sign_in"]</div>
     </div>
 </body>
 </html>
