@@ -63,7 +63,7 @@ def generate_xml(csv_data):
     author_last_name.text = ""
 
     for post_id, (_, row) in enumerate(csv_data.iterrows(), start=1):
-        post_id = i + 1
+
         slug = row['Slug']
         title = row['Title']
         content = row['Content']
