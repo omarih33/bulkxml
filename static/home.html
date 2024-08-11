@@ -20,19 +20,6 @@
             min-height: 100vh;
             padding: 20px;
         }
-        .header {
-            width: 100%;
-            padding: 20px;
-            background-color: #f4f4f9;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            display: flex;
-            justify-content: flex-end;
-        }
-        .header a.login-link {
-            color: #007BFF;
-            text-decoration: none;
-            font-weight: 600;
-        }
         .container {
             max-width: 700px;
             width: 100%;
@@ -99,7 +86,7 @@
         .features li { margin-bottom: 15px; padding-left: 30px; position: relative; }
         .features li:before { content: "✓"; color: #28a745; position: absolute; left: 0; top: 0; }
         .cta-button { display: block; text-align: center; font-size: 1.2em; margin: 30px auto; width: 80%; }
-        .testimonial { 
+        .testimonial {
             background-color: #e9ecef; 
             border-left: 5px solid #007BFF; 
             padding: 20px; 
@@ -112,12 +99,16 @@
             margin-top: 10px; 
             font-weight: bold; 
         }
+		.login-link {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <a href="https://blogxml.sqspthemes.com?msopen=/member/sign_in" class="login-link">Login</a>
-    </div>
     <div class="container">
         <h1>Tired of wasting countless hours manually inputting content into Squarespace?</h1>
         <h2>Introducing the CSV to XML Converter: Your Secret Weapon for Lightning-Fast Content Migration and Dynamic Summary Blocks</h2>
@@ -141,6 +132,7 @@
         <iframe src="https://www.youtube.com/embed/kdQ5eaFq-0Y" frameborder="0" allowfullscreen></iframe>
         
         <p><strong>Sign up or log in now to access the full power of our conversion tool!</strong></p>
+        <a href="https://blogxml.sqspthemes.com?msopen=/member/sign_in" class="login-link">Login</a>
         <div>[ms-widget-embed path="/member/sign_in"]</div>
     </div>
 </body>
