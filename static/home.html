@@ -16,30 +16,21 @@
             line-height: 1.6;
         }
 
-        .header {
+         .header {
             background-color: #2e3d49;
-            color: #ffffff;
-            padding: 15px 20px;
+            padding: 20px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-logo {
-            flex-shrink: 0;
         }
 
         .header-logo img {
-            max-height: 40px;
+            height: 40px;
         }
 
         .header-nav {
             display: flex;
-            gap: 25px;
+            gap: 30px;
             flex-grow: 1;
             justify-content: center;
             align-items: center;
@@ -57,8 +48,7 @@
             color: #f4b400;
         }
 
-        .header-login,
-        .header-actions {
+        .header-login {
             display: flex;
             align-items: center;
             gap: 20px;
@@ -83,6 +73,10 @@
             border-radius: 5px;
             font-weight: 600;
             transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #d89a00;
         }
 
         .cta-button:hover {
@@ -392,9 +386,6 @@
 
         <div class="header-login">
             <a href="/member/login">Login</a>
-        </div>
-
-        <div class="header-actions">
             <a class="cta-button" href="/free-template-finder">Free Template Finder</a>
         </div>
     </header>
