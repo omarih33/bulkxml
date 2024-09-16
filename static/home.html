@@ -92,6 +92,85 @@
             border: none;
         }
 
+  /* Hero Section Styles */
+        .hero {
+            background-color: #2e3d49;
+            color: #ffffff;
+            padding: 100px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-text {
+            max-width: 600px;
+            flex: 1 1 60%;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8em;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+
+        .hero-text .cta-button {
+            background-color: #f4b400;
+            color: #333;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            display: inline-block;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .hero-text .cta-button:hover {
+            background-color: #d89a00;
+        }
+
+        .hero-video {
+            flex: 1 1 35%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .hero-video iframe {
+            width: 100%;
+            max-width: 500px;
+            height: 280px;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-video {
+                margin-top: 20px;
+            }
+
+            .hero-text {
+                flex: 1 1 100%;
+            }
+
+            .hero-video {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+        
         .content-section {
             max-width: 1200px;
             margin: 40px auto;
@@ -368,13 +447,16 @@
         </div>
     </header>
 
-    <section class="header">
-        <h1>Effortlessly Migrate Your Blog to Squarespace in Minutes</h1>
-        <p style="max-width: 800px; margin: 0 auto;">Simplify your content transfer with our CSV to XML Converter – save time, reduce errors, and focus on what really matters: growing your blog.</p>
-        <div class="video-wrapper">
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Effortlessly Migrate Your Blog to Squarespace in Minutes</h1>
+            <p>Simplify your content transfer with our CSV to XML Converter – save time, reduce errors, and focus on what really matters: growing your blog.</p>
+            <a href="https://blogxml.sqspthemes.com?msopen=/member/plans/ejkqla07fi" class="cta-button">Get Started Now</a>
+        </div>
+        <div class="hero-video">
             <iframe src="https://www.youtube.com/embed/kdQ5eaFq-0Y" frameborder="0" allowfullscreen></iframe>
         </div>
-        <a href="https://blogxml.sqspthemes.com?msopen=/member/plans/ejkqla07fi" class="cta-button">Get Started Now</a>
     </section>
 
     <section class="content-section">
