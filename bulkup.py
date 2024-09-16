@@ -187,7 +187,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return send_from_directory('static', 'home.html')
+    # Serve the converter page directly as the home page
+    return render_template('index.html')
+
 
 @app.route('/converter')
 def converter():
