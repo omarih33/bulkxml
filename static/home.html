@@ -1,142 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Squarespace Content Automation: CSV to XML Converter</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <script> var MemberSpace = window.MemberSpace || {"subdomain":"sqspthemes1"}; (function(d){ var s = d.createElement("script"); s.src = "https://cdn.memberspace.com/scripts/widgets.js"; var e = d.getElementsByTagName("script")[0]; e.parentNode.insertBefore(s,e); }(document)); </script>
+    <script>var MemberSpace = window.MemberSpace || { "subdomain": "sqspthemes1" }; (function (d) { var s = d.createElement("script"); s.src = "https://cdn.memberspace.com/scripts/widgets.js"; var e = d.getElementsByTagName("script")[0]; e.parentNode.insertBefore(s, e); }(document));</script>
     <style>
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #ffffff;
+            background-color: #f8f9fa;
             color: #333;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            min-height: 100vh;
-            padding: 20px;
+            line-height: 1.6;
         }
-        .container {
-            max-width: 700px;
-            width: 100%;
-            background: #f4f4f9;
-            padding: 40px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
+
+        .header,
+        .cta-section {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 60px 20px;
             text-align: center;
         }
-        h1 {
-            font-weight: 600;
-            color: #007BFF;
+
+        .header h1 {
+            font-size: 2.8em;
             margin-bottom: 10px;
         }
-        p.description {
-            font-weight: 400;
-            margin-bottom: 30px;
-            color: #666;
-        }
-        a, .btn {
-            display: inline-block;
+
+        .header p {
+            font-size: 1.2em;
             margin-bottom: 20px;
+        }
+
+        .header a {
             color: #fff;
-            background: #007BFF;
-            padding: 15px 25px;
+            background: #28a745;
+            padding: 15px 30px;
             text-decoration: none;
             border-radius: 5px;
             font-weight: 600;
             transition: background 0.3s ease;
         }
-        a:hover, .btn:hover {
-            background: #0056b3;
-        }
-        button {
-            background: #28a745;
-            color: #fff;
-            padding: 15px 25px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background 0.3s ease;
-        }
-        button:hover {
+
+        .header a:hover {
             background: #218838;
         }
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            align-items: center;
+
+        .content-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
-        iframe {
-            margin: 30px 0;
-            width: 100%;
-            height: 315px;
-            max-width: 560px;
-            border-radius: 10px;
-        }
-        .container { text-align: left; max-width: 800px; }
-        h1 { font-size: 2.5em; line-height: 1.2; margin-bottom: 20px; }
-        h2 { font-size: 1.8em; color: #28a745; margin-bottom: 30px; }
-        .features { list-style-type: none; padding: 0; }
-        .features li { margin-bottom: 15px; padding-left: 30px; position: relative; }
-        .features li:before { content: "✓"; color: #28a745; position: absolute; left: 0; top: 0; }
-        .cta-button { display: block; text-align: center; font-size: 1.2em; margin: 30px auto; width: 80%; }
-        .testimonial {
-            background-color: #e9ecef; 
-            border-left: 5px solid #007BFF; 
-            padding: 20px; 
-            margin: 30px 0; 
-            font-style: italic; 
-        }
-        .testimonial-author { 
-            font-style: normal; 
-            text-align: right; 
-            margin-top: 10px; 
-            font-weight: bold; 
-        }
-        .login-link {
+
+        .content-section h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
             color: #007BFF;
+        }
+
+        .content-section p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .features-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .features-section .feature {
+            flex: 1 1 calc(50% - 20px);
+            background: #f1f1f1;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #28a745;
+        }
+
+        .feature p {
+            font-size: 1em;
+        }
+
+        .how-it-works {
+            background: #ffffff;
+            padding: 40px 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .how-it-works h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #28a745;
+        }
+
+        .how-it-works ol {
+            padding-left: 20px;
+        }
+
+        .how-it-works li {
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .pricing-section {
+            text-align: center;
+            background-color: #f8f9fa;
+            padding: 60px 20px;
+        }
+
+        .pricing-section h3 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+
+        .pricing-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .pricing-section .btn {
+            font-size: 1.2em;
+            padding: 15px 30px;
+            background: #007BFF;
+            color: #fff;
             text-decoration: none;
+            border-radius: 5px;
             font-weight: 600;
-            display: block;
+            transition: background 0.3s ease;
+        }
+
+        .pricing-section .btn:hover {
+            background: #0056b3;
+        }
+
+        .faq-section {
+            background-color: #ffffff;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-section h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #007BFF;
+        }
+
+        .faq-section details {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            background: #f1f1f1;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-section summary {
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .cta-section h3 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .cta-section a {
+            color: #fff;
+            background: #28a745;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .cta-section a:hover {
+            background: #218838;
+        }
+
+        .testimonial-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .testimonial {
+            background-color: #e9ecef;
+            border-left: 5px solid #007BFF;
+            padding: 20px;
             margin: 20px 0;
+            font-style: italic;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-author {
+            font-style: normal;
+            text-align: right;
+            margin-top: 10px;
+            font-weight: bold;
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Tired of manually inputting blog content into Squarespace?</h1>
-        <h2>Introducing the CSV to XML Converter</h2>
-     
-        <iframe src="https://www.youtube.com/embed/kdQ5eaFq-0Y" frameborder="0" allowfullscreen></iframe>
-        
-        <p class="description">Are you struggling with migrating your blog content to Squarespace? Whether you’re dealing with proprietary blog systems or just want a more streamlined workflow, our CSV to XML converter is here to help.</p>
-        
-        <ul class="features">
-           <li>Migrate entire blogs in minutes.</li>
-    <li>Easily create summary blocks.</li>
-    <li>Update content across multiple pages effortlessly.</li>
-    <li>Import posts into new or existing blog rolls.</li>
-    <li>Minimize manual effort with accurate imports.</li>
-        </ul>
+    <header class="header">
+        <h1>Effortlessly Migrate Your Blog to Squarespace in Minutes</h1>
+        <p>Simplify your content transfer with our CSV to XML Converter – save time, reduce errors, and focus on what really matters: growing your blog.</p>
+        <a href="https://blogxml.sqspthemes.com?msopen=/member/plans/ejkqla07fi">Get Started Now</a>
+    </header>
 
-        <a href="https://blogxml.sqspthemes.com?msopen=/member/plans/ejkqla07fi" class="btn cta-button">Get Lifetime Access Now</a>
-      
-        <p><strong>Sign up or log in now to access the full power of our conversion tool!</strong></p>
+    <section class="content-section">
+        <h2>Key Benefits</h2>
+        <div class="features-section">
+            <div class="feature">
+                <h3>Migrate Entire Blogs in Minutes</h3>
+                <p>No more manual copying and pasting—upload your entire blog effortlessly.</p>
+            </div>
+            <div class="feature">
+                <h3>Minimize Manual Effort</h3>
+                <p>Accurate imports ensure your content is transferred exactly as you need it, with minimal intervention.</p>
+            </div>
+            <div class="feature">
+                <h3>Create and Update Seamlessly</h3>
+                <p>Easily create summary blocks and update content across multiple pages in just a few clicks.</p>
+            </div>
+            <div class="feature">
+                <h3>Import Posts into New or Existing Blogs</h3>
+                <p>Flexibly manage your blog content, whether starting fresh or adding to an existing blog.</p>
+            </div>
+        </div>
+    </section>
 
-        <div>[ms-widget-embed path="/member/sign_in"]</div>
+    <section class="content-section">
+        <div class="how-it-works">
+            <h3>How it works</h3>
+            <ol>
+                <li><strong>Prepare Your CSV File:</strong> Organize your blog content into a CSV file, ensuring each entry is formatted correctly.</li>
+                <li><strong>Upload and Convert:</strong> Upload your CSV file to our converter tool. With just a few clicks, your content will be transformed into a Squarespace-compatible XML file.</li>
+                <li><strong>Import to Squarespace:</strong> Import the XML file into your Squarespace site. Whether you're creating a new blog or updating an existing one, the process is seamless.</li>
+                <li><strong>Review and Publish:</strong> Quickly review your content within Squarespace, make any necessary tweaks, and publish your updated blog instantly.</li>
+            </ol>
+        </div>
+    </section>
 
+    <section class="pricing-section">
+        <h3>Blog CSV to XML Converter</h3
+        <p>Lifetime Access - $70</p>
+        <p>One-Time Payment: Enjoy lifetime access with no recurring fees.</p>
+        <p>Money-Back Guarantee: If you're not satisfied, just email us for a full refund.</p>
+        <p>Instant Access: Start uploading your blog posts within minutes.</p>
+        <a href="https://blogxml.sqspthemes.com?msopen=/member/plans/ejkqla07fi" class="btn">Get Started Now</a>
+    </section>
+
+    <section class="testimonial-section">
         <div class="testimonial">
             <p>"Exactly What We Needed"</p>
             <p>"We were struggling with migrating our blog content, and Omari's tool was the perfect solution. It saved us countless hours and frustration. The support we received was also top-notch!"</p>
             <p class="testimonial-author">- Dave H.</p>
         </div>
-        
+
         <div class="testimonial">
             <p>"A Game Changer for Our Workflow"</p>
             <p>"Being able to import blog posts into our existing blog roll without giving external writers full access to our site is a huge relief. This tool has solved a problem that’s been plaguing us for years."</p>
@@ -148,6 +291,40 @@
             <p>"This tool made our content process much more efficient, and we’re excited to implement it across all our projects."</p>
             <p class="testimonial-author">- Chris R.</p>
         </div>
-    </div>
+    </section>
+
+    <section class="faq-section">
+        <h3>FAQs</h3>
+        <details>
+            <summary>What does the CSV to XML converter do?</summary>
+            <p>Our tool converts a CSV file containing your blog posts into an XML format that can be easily imported into Squarespace, allowing you to upload multiple blog posts at once.</p>
+        </details>
+        <details>
+            <summary>What should I do if my XML file fails to import?</summary>
+            <p>First, ensure that your CSV file is correctly formatted according to our template. If you continue to experience issues, double-check that you’ve selected WordPress as the source platform in Squarespace and that you’ve toggled to the Advanced tab before uploading the XML file.</p>
+        </details>
+        <details>
+            <summary>Can I import posts into an existing blog?</summary>
+            <p>Yes, you can import posts into an existing blog roll in Squarespace. The imported posts will appear in the Not Linked section, where you can move them to your desired blog roll.</p>
+        </details>
+        <details>
+            <summary>What happens to the images in my blog posts?</summary>
+            <p>Images linked in your CSV file will be included in the import, but make sure the URLs are correct and accessible. If an image fails to upload, you might need to manually update it within Squarespace after the import.</p>
+        </details>
+        <details>
+            <summary>How long does the import process take?</summary>
+            <p>The import process typically takes a few minutes, but this can vary depending on the size of your blog and the speed of your internet connection. You’ll receive a Success message once the import is complete.</p>
+        </details>
+        <details>
+            <summary>I need help! How can I get support?</summary>
+            <p>If you encounter any issues or have questions, feel free to reach out to our support team support@sqspthemes.com. We’re here to help you every step of the way.</p>
+        </details>
+    </section>
+
+    <section class="cta-section">
+        <h3>Ready to Streamline Your Blog Migration?</h3>
+        <a href="https://blogxml.sqspthemes.com?msopen=/member/plans/ejkqla07fi">Get Started Now</a>
+    </section>
 </body>
+
 </html>
