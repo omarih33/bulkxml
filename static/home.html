@@ -16,12 +16,13 @@
             line-height: 1.6;
         }
 
-         .header {
+          .header {
             background-color: #2e3d49;
             padding: 20px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .header-logo img {
@@ -33,14 +34,12 @@
             gap: 30px;
             flex-grow: 1;
             justify-content: center;
-            align-items: center;
         }
 
         .header-nav a {
             color: #ffffff;
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.3s ease;
             padding: 5px 0;
         }
 
@@ -48,20 +47,20 @@
             color: #f4b400;
         }
 
-        .header-login {
+        .header-actions {
             display: flex;
-            align-items: center;
             gap: 20px;
+            align-items: center;
         }
 
-        .header-login a {
+        .header-actions a {
             color: #ffffff;
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s ease;
         }
 
-        .header-login a:hover {
+        .header-actions a:hover {
             color: #f4b400;
         }
 
@@ -73,10 +72,6 @@
             border-radius: 5px;
             font-weight: 600;
             transition: background 0.3s ease;
-        }
-
-        .cta-button:hover {
-            background: #d89a00;
         }
 
         .cta-button:hover {
@@ -352,39 +347,22 @@
 </head>
 
 <body>
-    <header class="header">
+   <header class="header">
         <div class="header-logo">
-            <a href="/"><img src="//images.squarespace-cdn.com/content/v1/558ae872e4b06e5cac195ad7/1545189275086-V1Y1JCAQVG909LBUIFI3/SQSP-themes-logog.png?format=1500w" alt="SQSP Themes" /></a>
+            <a href="/"><img src="//images.squarespace-cdn.com/content/v1/558ae872e4b06e5cac195ad7/1545189275086-V1Y1JCAQVG909LBUIFI3/SQSP-themes-logog.png?format=1500w" alt="SQSP Themes"></a>
         </div>
 
         <nav class="header-nav">
             <a href="/templates">Templates</a>
             <a href="/plugins">Plugins</a>
-            <div class="header-nav-item header-nav-item--folder">
-                <a class="header-nav-folder-title" href="/resources-1">
-                    Resources
-                </a>
-                <div class="header-nav-folder-content">
-                    <div class="header-nav-folder-item">
-                        <a href="/elfsight-widgets" target="_blank">Widgets</a>
-                    </div>
-                    <div class="header-nav-folder-item">
-                        <a href="/squarespace-integrations">Integrations</a>
-                    </div>
-                    <div class="header-nav-folder-item">
-                        <a href="/squarespace-tutorials">Tutorials</a>
-                    </div>
-                    <div class="header-nav-folder-item">
-                        <a href="/blog">Blog</a>
-                    </div>
-                    <div class="header-nav-folder-item">
-                        <a href="/podcast">Podcast</a>
-                    </div>
-                </div>
-            </div>
+            <a href="/widgets">Widgets</a>
+            <a href="/integrations">Integrations</a>
+            <a href="/tutorials">Tutorials</a>
+            <a href="/blog">Blog</a>
+            <a href="/podcast">Podcast</a>
         </nav>
 
-        <div class="header-login">
+        <div class="header-actions">
             <a href="/member/login">Login</a>
             <a class="cta-button" href="/free-template-finder">Free Template Finder</a>
         </div>
