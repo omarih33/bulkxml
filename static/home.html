@@ -20,35 +20,62 @@
         .header {
             background-color: #2e3d49;
             color: #ffffff;
-            padding: 60px 20px;
-            text-align: center;
+            padding: 20px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .header h1 {
-            font-size: 2.8em;
-            margin-bottom: 10px;
-            font-weight: 700;
+        .header-logo img {
+            max-height: 50px;
         }
 
-        .header p {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-            font-weight: 400;
+        .header-nav {
+            display: flex;
+            gap: 20px;
         }
 
-        .header .cta-button {
+        .header-nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .header-nav a:hover {
+            color: #f4b400;
+        }
+
+        .header-login {
+            margin-left: auto;
+            margin-right: 20px;
+        }
+
+        .header-login a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .header-login a:hover {
+            color: #f4b400;
+        }
+
+        .cta-button {
             color: #ffffff;
             background: #f4b400;
-            padding: 15px 30px;
+            padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
             font-weight: 600;
             transition: background 0.3s ease;
-            margin-top: 20px;
-            display: inline-block;
         }
 
-        .header .cta-button:hover {
+        .cta-button:hover {
             background: #d89a00;
         }
 
@@ -279,7 +306,7 @@
             background-color: #2e3d49;
             color: #ffffff;
             padding: 40px 20px;
-            text-align: center;
+            text-align:             : center;
             font-size: 0.9em;
         }
 
@@ -299,7 +326,7 @@
             justify-content: center;
             gap: 30px;
             flex-wrap: wrap;
-            margin-top:20px;
+            margin-top: 20px;
         }
 
         footer .footer-links a {
@@ -322,13 +349,54 @@
 
 <body>
     <header class="header">
+        <div class="header-logo">
+            <a href="/"><img src="//images.squarespace-cdn.com/content/v1/558ae872e4b06e5cac195ad7/1545189275086-V1Y1JCAQVG909LBUIFI3/SQSP-themes-logog.png?format=1500w" alt="SQSP Themes" /></a>
+        </div>
+
+        <nav class="header-nav">
+            <a href="/templates">Templates</a>
+            <a href="/plugins">Plugins</a>
+            <div class="header-nav-item header-nav-item--folder">
+                <a class="header-nav-folder-title" href="/resources-1" tabindex="-1">
+                    Resources
+                </a>
+                <div class="header-nav-folder-content">
+                    <div class="header-nav-folder-item">
+                        <a href="/elfsight-widgets" target="_blank">Widgets</a>
+                    </div>
+                    <div class="header-nav-folder-item">
+                        <a href="/squarespace-integrations">Integrations</a>
+                    </div>
+                    <div class="header-nav-folder-item">
+                        <a href="/squarespace-tutorials">Tutorials</a>
+                    </div>
+                    <div class="header-nav-folder-item">
+                        <a href="/blog">Blog</a>
+                    </div>
+                    <div class="header-nav-folder-item">
+                        <a href="/podcast">Podcast</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="header-login">
+            <a href="/member/login">Login</a>
+        </div>
+
+        <div class="header-actions">
+            <a class="cta-button" href="/free-template-finder">Free Template Finder</a>
+        </div>
+    </header>
+
+    <section class="header">
         <h1>Effortlessly Migrate Your Blog to Squarespace in Minutes</h1>
-        <p>Simplify your content transfer with our CSV to XML Converter – save time, reduce errors, and focus on what really matters: growing your blog.</p>
+        <p style="max-width: 800px; margin: 0 auto;">Simplify your content transfer with our CSV to XML Converter – save time, reduce errors, and focus on what really matters: growing your blog.</p>
         <div class="video-wrapper">
             <iframe src="https://www.youtube.com/embed/kdQ5eaFq-0Y" frameborder="0" allowfullscreen></iframe>
         </div>
         <a href="https://blogxml.sqspthemes.com?msopen=/member/plans/ejkqla07fi" class="cta-button">Get Started Now</a>
-    </header>
+    </section>
 
     <section class="content-section">
         <h2>Key Benefits</h2>
@@ -419,11 +487,11 @@
 
     <footer>
         <div class="footer-links">
-            <a href="https://sqspthemes.com/">Home</a>
-            <a href="https://sqspthemes.com/plugins">Shop Plugins</a>
-            <a href="https://sqspthemes.com/templates">Templates</a>
+            <a href="#">About</a>
+            <a href="#">Shop</a>
+            <a href="#">Community</a>
         </div>
-        <p>&copy; 2024 SQSP Themes. All rights reserved.</p>
+       
     </footer>
 </body>
 
